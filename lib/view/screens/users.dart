@@ -1,8 +1,6 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:reqres/view/widgets/user_card.dart';
-import 'package:http/http.dart' as http;
 
 import '../../utils/api_endpoints.dart';
 import '../../utils/consts.dart';
@@ -17,19 +15,48 @@ class UsersScreen extends StatefulWidget {
 Map? responseMap;
 List? responseList;
 
-
-//TODO: Convert it to Dio and create model
 class _UsersScreenState extends State<UsersScreen> {
   Future getUsers() async {
-    http.Response response;
-    response = await http.get(
-        Uri.parse(ApiEndpoints.baseUrl + ApiEndpoints.authEndpoints.userList));
-    if (response.statusCode == 200) {
-      setState(() {
-        responseMap = json.decode(response.body);
-        responseList = responseMap?['data'];
-      });
+    try {
+      var dio = Dio();
+      var response = await dio
+          .get(ApiEndpoints.baseUrl + ApiEndpoints.authEndpoints.userList);
+
+      if (response.statusCode == 200) {
+        setState(() {
+          var responseData = response.data;
+          responseList = responseData['data'];
+        });
+      } else {
+        print(response.statusMessage);
+      }
+    } on DioException catch (e) {
+      if (e.response != null) {
+        _showErrorSnackBar(e, context);
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
     }
+  }
+
+  void _showErrorSnackBar(DioException error, BuildContext context) {
+    String errorMessage = AppStrings.error;
+
+    if (error.type == DioExceptionType.badResponse) {
+      errorMessage = '${AppStrings.invalidStatus}${error.response?.statusCode}';
+    } else if (error.type == DioExceptionType.connectionTimeout ||
+        error.type == DioExceptionType.sendTimeout ||
+        error.type == DioExceptionType.receiveTimeout) {
+      errorMessage = AppStrings.connectionTimeout;
+    } else if (error.type == DioExceptionType.unknown) {
+      errorMessage = AppStrings.connectionFailed;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(errorMessage)),
+    );
   }
 
   @override

@@ -20,6 +20,9 @@ class AppStrings {
   static const String loginError = "Login failed. Please check your credentials.";
   static const String missingCredential = "Please fill all required fields.";
   static const String error = "Error!";
+  static const String invalidStatus = "Received invalid status code:";
+  static const String connectionTimeout = "Connection timed out";
+  static const String connectionFailed = "Connection failed due to internet connection";
 
 
   //Input Field Texts
