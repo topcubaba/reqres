@@ -3,15 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reqres/model/login_req_model.dart';
 import 'package:reqres/utils/api_endpoints.dart';
 import 'package:reqres/service/token_service.dart';
+import 'package:reqres/utils/consts.dart';
 import 'package:reqres/view/screens/login.dart';
 import 'package:reqres/service/login_service.dart';
 import 'package:dio/dio.dart';
 
 import '../view/screens/homepage.dart';
 
-abstract class LoginController extends ConsumerState<LoginScreen> with TokenService{
-
-
+abstract class LoginController extends ConsumerState<LoginScreen>
+    with TokenService {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -35,9 +35,11 @@ abstract class LoginController extends ConsumerState<LoginScreen> with TokenServ
     if (response != null) {
       saveToken(response.token ?? "null");
       Navigator.pop(context);
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyHomePage()));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const MyHomePage()));
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text(AppStrings.loginError)));
     }
-    }
-
+  }
 }
-

@@ -20,17 +20,18 @@ class LoginTextField extends StatelessWidget {
   final bool isPassword;
   final bool? isEmail;
 
+  //REGEX for email validation
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter an email';
     }
-    if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(value)) {
+    if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$')
+        .hasMatch(value)) {
       return 'Please enter a valid email';
     }
     return null;
   }
 
-  //TODO: Implement validator and make sure it works
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -54,7 +55,8 @@ class LoginTextField extends StatelessWidget {
                   ],
                 ),
                 TextFormField(
-                  style: const TextStyle(color: AppColors.greyish, fontSize: 14),
+                  style:
+                      const TextStyle(color: AppColors.greyish, fontSize: 14),
                   obscureText: isPassword ? true : false,
                   controller: controller,
                   cursorColor: AppColors.greyish,
@@ -75,6 +77,7 @@ class LoginTextField extends StatelessWidget {
                     labelStyle:
                         const TextStyle(color: AppColors.greyish, fontSize: 14),
                   ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: isEmail == true ? _validateEmail : null,
                 ),
               ],

@@ -8,21 +8,18 @@ class AppColors {
   static const Color orange = Color(0xFFFDAE37);
   static const Color lightOrange = Color(0xFFFAC762);
   static const Color error = Color(0xFFD32F2F);
-
   static const Color black = Color(0xFF000000);
 }
 
 class AppStrings {
+  //General
   static const String appName = "reqres";
   static const String loginDesc = "Welcome! Please login to access";
-  static const String emailError = "Please enter valid email address";
-  static const String passwordError = "Please enter password correctly";
-  static const String loginError = "Unknown Error";
+
+  //Error Messages
+  static const String loginError = "Login failed. Please check your credentials.";
+  static const String missingCredential = "Please fill all required fields.";
   static const String error = "Error!";
-  static const String addTodo = "Add to-do";
-  static const String writeTodo = "Write your note";
-  static const String add = "Accept";
-  static const String cancel = "Cancel";
 
 
   //Input Field Texts
@@ -31,8 +28,10 @@ class AppStrings {
   static const String password = "Password*";
   static const String passwordHint = "Please enter your password";
 
+  //Button Texts
   static const String login = "Login";
 
+  //User Card Texts
   static const String firstName = "First Name:";
   static const String lastName = "Last Name:";
 }

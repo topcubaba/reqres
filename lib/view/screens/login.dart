@@ -15,13 +15,9 @@ class LoginScreen extends ConsumerStatefulWidget {
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-
-//TODO: Add validator to textfields
-//TODO: Add error messages
 class _LoginScreenState extends LoginController {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
@@ -64,12 +60,19 @@ class _LoginScreenState extends LoginController {
             controller: passwordController,
             isPassword: true,
           ),
-          const Spacer(),
           Padding(
-            padding: context.padding.verticalMedium,
+            padding: context.padding.verticalNormal,
             child: ConfirmButton(
               title: AppStrings.login,
-              onPressed: () => login(emailController.text, passwordController.text),
+              onPressed: () {
+                if (emailController.text != "" &&
+                    passwordController.text != "") {
+                  login(emailController.text, passwordController.text);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(AppStrings.missingCredential)));
+                }
+              },
               isDisabled: false,
             ),
           ),
@@ -78,13 +81,12 @@ class _LoginScreenState extends LoginController {
     );
   }
 
-    @override
-    void dispose() {
-      super.dispose();
-      emailController.dispose();
-      passwordController.dispose();
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
   }
-
 }
 
 Widget buildContainerPaddingAndHeight(BuildContext context) {
