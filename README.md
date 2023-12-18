@@ -23,4 +23,4 @@ Here are the screenshots:
 
 Login Screen | User List Screen
 ---|----|
-<img width="200" alt="018" src="https://github.com/topcubaba/showy/assets/50087007/3f104ed4-f2b3-4769-8c24-0f0ca44c0618"> | <img width="200" alt="018" src="https://github.com/topcubaba/showy/assets/50087007/9e318dcd-3348-4be5-a690-662d442e8900"> |
+<img width="200" alt="018" src="https://github.com/topcubaba/reqres/assets/50087007/970ade33-480b-4f2d-8d81-e552ec9614a9"> | <img width="200" alt="018" src="https://github.com/topcubaba/reqres/assets/50087007/c56720ce-dce5-43ec-baae-e369b5ca1112"> |
