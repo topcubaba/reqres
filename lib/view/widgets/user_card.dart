@@ -18,9 +18,6 @@ class UserCard extends StatelessWidget {
       required this.avatar})
       : super(key: key);
 
-
-  
-  //TODO: Fix image border design issue
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,17 +25,21 @@ class UserCard extends StatelessWidget {
       child: Padding(
         padding: context.padding.onlyTopLow,
         child: Container(
-          height: context.sized.dynamicHeight(0.14),
-          decoration: BoxDecoration(
-              borderRadius: context.border.normalBorderRadius,
-              color: AppColors.greyish),
+          padding: EdgeInsets.only(left: context.sized.lowValue),
+          height: context.sized.dynamicHeight(0.15),
+          decoration: const BoxDecoration(
+              borderRadius:
+                  BorderRadius.only(
+                    bottomLeft: Radius.circular(65),
+                    topLeft: Radius.circular(65),
+                    ),
+              color: AppColors.greenish),
           child: Row(
             children: <Widget>[
-              Container(
-                  width: context.sized.dynamicWidth(0.3),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(image: NetworkImage(avatar)))),
+              CircleAvatar(
+                backgroundImage: NetworkImage(avatar),
+                radius: context.sized.dynamicHeight(0.065),
+              ),
               Padding(
                 padding: context.padding.low,
                 child: Column(
@@ -46,7 +47,7 @@ class UserCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                       AppStrings.firstName + firstName,
+                      AppStrings.firstName + firstName,
                       style: TextStyle(
                         color: AppColors.white,
                         fontSize: context.sized.normalValue,
@@ -59,7 +60,7 @@ class UserCard extends StatelessWidget {
                         fontSize: context.sized.normalValue,
                       ),
                     ),
-                    const Spacer(),
+                    SizedBox(height: context.sized.dynamicHeight(0.025),),
                     Text(
                       email,
                       style: TextStyle(

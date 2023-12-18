@@ -35,6 +35,6 @@ class AppStrings {
   static const String login = "Login";
 
   //User Card Texts
-  static const String firstName = "First Name:";
-  static const String lastName = "Last Name:";
+  static const String firstName = "First Name: ";
+  static const String lastName = "Last Name: ";
 }
