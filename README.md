@@ -1,16 +1,26 @@
 # reqres
 
-A new Flutter project.
+Simple flutter app that works with [ReqRes](https://reqres.in) fake APIs  
 
-## Getting Started
+Login credentials:  
+Email: eve.holt@reqres.in  
+Pass: cityslicka
 
-This project is a starting point for a Flutter application.
+tech |
+---|
+[Riverpod](https://pub.dev/packages/flutter_riverpod) |
+[Shared Preferences](https://pub.dev/packages/shared_preferences) |
+[Dio](https://pub.dev/packages/dio) |
+[Kartal](https://pub.dev/packages/kartal) |
+[Flutter SVG](https://pub.dev/packages/flutter_svg) |
 
-A few resources to get you started if this is your first Flutter project:
+## Introduction
+App logs in with ReqRes API. After login, the app stays logged in until the user logs out even app is closed.  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+-On the home page, there is a user list from ReqRes API.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Here are the screenshots:
+
+Login Screen | User List Screen
+---|----|
+<img width="200" alt="018" src="https://github.com/topcubaba/showy/assets/50087007/3f104ed4-f2b3-4769-8c24-0f0ca44c0618"> | <img width="200" alt="018" src="https://github.com/topcubaba/showy/assets/50087007/9e318dcd-3348-4be5-a690-662d442e8900"> |
