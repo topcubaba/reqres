@@ -15,9 +15,9 @@ tech |
 [Flutter SVG](https://pub.dev/packages/flutter_svg) |
 
 ## Introduction
-App logs in with ReqRes API. After login, the app stays logged in until the user logs out even app is closed.  
+The app logs in with the ReqRes API. After logging in, the app stays logged in even when it is closed until the user logs out.
 
--On the home page, there is a user list from ReqRes API.  
+- On the home page, there is a user list from the ReqRes API.  
 
 Here are the screenshots:
 
