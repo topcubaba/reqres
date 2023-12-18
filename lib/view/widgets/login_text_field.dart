@@ -30,6 +30,7 @@ class LoginTextField extends StatelessWidget {
     return null;
   }
 
+  //TODO: Implement validator and make sure it works
   @override
   Widget build(BuildContext context) {
     return Column(
